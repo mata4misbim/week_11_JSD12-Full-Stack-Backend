@@ -7,7 +7,7 @@ import { users } from "./fakeData/fakeUsers.js";
 import { router as apiRoutes } from "./routes/index.js";
 import { connectDB } from "./config/mongodb.js";
 import { connectSupabase } from "./config/supabase.js";
-import { limiter } from "./middlewares/rateLimiter.js";
+import { rateLimiter } from "./middlewares/rateLimiter.js";
 
 const app = express();
 
@@ -23,7 +23,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(limiter);
+app.use(rateLimiter);
 app.use(express.json());
 app.use(cookieParser());
 
